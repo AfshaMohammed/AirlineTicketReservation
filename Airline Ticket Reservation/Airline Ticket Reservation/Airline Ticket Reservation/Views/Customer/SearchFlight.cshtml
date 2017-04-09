@@ -1,0 +1,80 @@
+﻿@model List<Airline_Ticket_Reservation.Models.Add_New_FlightViewModel>
+@{
+    ViewBag.Title = "Search Flight";
+}
+
+<h2>@ViewBag.Title.</h2>
+@using (Html.BeginForm("Search2", "Customer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div style="text-align: center">
+        <label id="Label6" style="color: #000000">Source</label>&nbsp;&nbsp;
+        <input type="text"  id="txtsource" name="txtsource" value="@ViewBag.source" />&nbsp;&nbsp;
+        <label id="Label7" style="color: #000000">Destination</label>&nbsp;&nbsp;   
+        <input type="text" id="txtdestination" name="txtdestination" value="@ViewBag.destination">&nbsp;&nbsp; 
+        <input id="btnSubmit" type="submit" name="btnSubmit" value="Search" />
+    </div>
+    <br />
+    <br />
+    <center>
+    <table class="grid" border="1">
+    <tr>
+        <th>Flight Company</th>
+        <th>Flight Number</th>
+        <th>Source</th>
+        <th>Destination</th>        
+        <th>Arrival Date</th>
+        <th>Arrival Time</th>
+        <th>Depature Date</th>
+        <th>Depature TIme</th>
+        <th>Amount</th>
+        <th>Seats</th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+        <tr>
+            
+            <td>
+                @item.txtfcompany
+            </td>
+            <td>
+                @item.txtfno
+            </td>
+            
+            <td>
+                @item.txtsource
+            </td>
+            <td>
+                @item.txtdestination
+            </td>
+            <td>
+                @item.txtarrdate
+            </td>
+            <td>
+                @item.txtArrivTime
+            </td>
+            <td>
+                @item.txtdepdate
+            </td>
+            <td>
+                @item.txtdeptime
+            </td>
+            <td>
+                @item.txtamt
+            </td>
+            <td>
+                @item.txtnoofseats
+            </td>
+            <td>                 
+                 <a   href='@Url.Action("FlightDetailss", "Customer", new { FlightNum = item.txtfno , isDelete= true,userype= "User"})'>Book Now</a>
+            </td>
+        </tr>
+        }
+    }
+
+</table>
+       </center>
+}

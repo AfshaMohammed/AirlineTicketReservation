@@ -1,0 +1,66 @@
+﻿@model List<Airline_Ticket_Reservation.Models.Add_New_FlightViewModel>
+@{
+    ViewBag.Title = "Flight Details";
+}
+<h2>@ViewBag.Title.</h2>
+<table class="grid" border="1">
+    <tr>
+         <th>Actions</th>
+        <th>Flight Company</th>
+        <th>Flight Number</th>
+        <th>Source</th>
+        <th>Destination</th>        
+        <th>Arrival Date</th>
+        <th>Arrival Time</th>
+        <th>Depature Date</th>
+        <th>Depature TIme</th>
+        <th>Amount</th>
+        <th>Seats</th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                 <a   href='@Url.Action("EditFlight", "Admin", new { FlightNum = item.txtfno , userype= "Admin", isEdit= true})'>Edit</a>
+                 <a   href='@Url.Action("UpdateFlight", "Admin", new { FlightNum = item.txtfno , isDelete= true,userype= "Admin"})'>Delete</a>
+            </td>
+            <td>
+                @item.txtfcompany
+            </td>
+            <td>
+                @item.txtfno
+            </td>
+            
+            <td>
+                @item.txtsource
+            </td>
+            <td>
+                @item.txtdestination
+            </td>
+            <td>
+                @item.txtarrdate
+            </td>
+            <td>
+                @item.txtArrivTime
+            </td>
+            <td>
+                @item.txtdepdate
+            </td>
+            <td>
+                @item.txtdeptime
+            </td>
+            <td>
+                @item.txtamt
+            </td>
+            <td>
+                @item.txtnoofseats
+            </td>
+        </tr>
+        }
+    }
+
+</table>
+
+ 

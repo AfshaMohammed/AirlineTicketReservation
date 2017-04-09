@@ -1,0 +1,144 @@
+﻿@model Airline_Ticket_Reservation.Models.Add_New_FlightViewModel
+@{
+    ViewBag.Title = "Add New FLight";
+}
+
+<h2>@ViewBag.Title.</h2>
+@using (Html.BeginForm("AddNewFlight", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <table style="width: 100%">
+
+
+        <tr>
+            <td style="color: #CC00CC; text-align: right; width: 531px; height: 32px;"><b>
+                <label id="Label1" style="color: #000000">FlightCompany</label>
+            </b></td>
+            <td style="width: 334px; height: 32px;">
+                @Html.DropDownList("txtfcompany", new List<SelectListItem>
+             { new SelectListItem { Text = "--Select--", Value = "--Select--", Selected=true},
+               new SelectListItem { Text = "Air India", Value = "Air India"},
+               new SelectListItem { Text = "Spicejet", Value = "Spicejet"},
+               new SelectListItem { Text = "aaa", Value = "aaa"},
+               new SelectListItem { Text = "bbbb", Value = "bbbb"},
+               new SelectListItem { Text = "ccccc", Value = "ccccc"}
+               })
+
+            </td>
+        </tr>
+        <tr>
+            <td style="color: #CC00CC; text-align: right; width: 531px; height: 38px;"><b>
+                <label id="Label2" style="color: #000000">FlightNumber</label>
+            </b></td>
+            <td style="width: 334px; height: 38px;">
+                @*   <input type="text" id="txtfno" name="txtfno">*@
+                @Html.TextBoxFor(m => m.txtfno)
+                @Html.ValidationMessageFor(m => m.txtfno)
+            </td>
+        </tr>
+        <tr>
+            <td style="color: #CC00CC; text-align: right; width: 531px; height: 41px;"><b>
+                <label id="Label3" style="color: #000000">ArrivalDate</label>
+            </b></td>
+            <td style="width: 334px; height: 41px;">
+                
+                  @Html.TextBoxFor(m => m.txtarrdate)
+                @Html.ValidationMessageFor(m => m.txtarrdate)
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 159px; text-align: right; height: 41px;">
+                <label id="Label16" style="font-weight: 700">ArrivalTime</label>
+            </td>
+            <td style="height: 41px; width: 490px;">
+                @*<input type="time" id="txtArrivTime" name="txtArrivTime" />*@
+                       @Html.TextBoxFor(m => m.txtArrivTime)
+                @Html.ValidationMessageFor(m => m.txtArrivTime)
+            </td>
+        </tr>
+        <tr>
+            <td style="color: #CC00CC; text-align: right; width: 531px; height: 44px;"><b>
+                <label id="Label4" style="color: #000000">DepatureDate</label>
+            </b></td>
+            <td style="width: 334px; height: 44px;">
+                @*<input type="date" id="txtdepdate" name="txtdepdate" />*@
+                     @Html.TextBoxFor(m => m.txtdepdate)
+                @Html.ValidationMessageFor(m => m.txtdepdate)
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 159px; text-align: right; height: 44px;">
+                <label id="lbldeptime" style="font-weight: 700;">DeprtureTime</label>
+            </td>
+            <td style="height: 44px; width: 490px;">
+                @*<input type="time" id="txtdeptime" name="txtdeptime">*@
+                     @Html.TextBoxFor(m => m.txtdeptime)
+                @Html.ValidationMessageFor(m => m.txtdeptime)
+            </td>
+        </tr>
+        <tr>
+            <td style="color: #CC00CC; text-align: right; width: 531px; height: 35px;">
+                <b>
+                    <label id="Label6" style="color: #000000">Source</label>
+                </b></td>
+            <td style="width: 334px; height: 35px;">
+                <b>
+                    @*<input type="text" id="txtsource" name="txtsource" />*@
+                        @Html.TextBoxFor(m => m.txtsource)
+                @Html.ValidationMessageFor(m => m.txtsource)
+                </b>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 159px; height: 35px; text-align: right">
+                <b>
+                    <label id="Label7" style="color: #000000">Destination</label>
+                </b>
+            </td>
+            <td style="height: 35px; width: 490px;">
+                @*<input type="text" id="txtdestination" name="txtdestination">*@
+                        @Html.TextBoxFor(m => m.txtdestination)
+                @Html.ValidationMessageFor(m => m.txtdestination)
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 159px; text-align: right; height: 32px;">
+                <b>
+                    <label id="Label5" style="color: #000000">NumberOfSeats</label>
+                </b>
+            </td>
+            <td style="height: 32px; width: 490px;">
+                @*<input type="number" id="txtnoofseats" name="txtnoofseats">*@
+                @Html.TextBoxFor(m => m.txtnoofseats)
+                @Html.ValidationMessageFor(m => m.txtnoofseats)
+            </td>
+        </tr>
+
+        <tr>
+            <td style="width: 159px; text-align: right; height: 38px;">
+                <label id="Label15" style="font-weight: 700">PerSeatAmount</label>
+            </td>
+            <td style="height: 38px; width: 490px;">
+                @*<input type="number" id="txtamt" name="txtamt">*@
+                   @Html.TextBoxFor(m => m.txtamt)
+                @Html.ValidationMessageFor(m => m.txtamt)
+            </td>
+        </tr>
+
+        <tr>
+            <td style="color: #CC00CC; text-align: center; height: 36px;" colspan="4">
+                <input id="btnSubmit" type="submit" name="btnSubmit" value="Add Flight" />
+                
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 531px">&nbsp;</td>
+            <td style="width: 334px">&nbsp;</td>
+        </tr>
+
+
+    </table>
+}
+
+<script src="@Url.Content("~/Scripts/Airlines/Main.js")" type="text/javascript"></script>
+

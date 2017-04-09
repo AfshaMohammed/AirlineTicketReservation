@@ -1,0 +1,79 @@
+﻿@model Airline_Ticket_Reservation.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <table style="width: 40%; margin-left:370px; height: 277px; box-shadow: 5px 5px 5px 10px #888888; background-color: #ffffff;">
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td style="text-align: right; height: 27px;"><i><b>
+            
+        <label id="Label4" style=" font-weight: 700; color: #000">Select Type</label>
+         </b></i></td>
+        <td style=" height: 27px;">
+
+             @Html.DropDownList("type", new List<SelectListItem>
+     { new SelectListItem { Text = "--Select--", Value = "--Select--", Selected=true},
+       new SelectListItem { Text = "Admin", Value = "Admin"},
+       new SelectListItem { Text = "Manager", Value = "Manager"},
+        new SelectListItem { Text = "User", Value = "User"}
+       })
+                  
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: right; color: #000;"><i><b>
+            <label id="Label1" style="color: #000">UserName</label>
+            </b></i></td>
+        <td >
+            <input type="text" id="uname" name="uname" />
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: right; color: #000;"><i><b>
+            <label id="Label2" style="color: #000">Password</label>
+            </b></i></td>
+        <td >
+            <input type="password" id="pwd" name="pwd" />
+        </td>
+    </tr>
+ 
+    <tr>
+        <td style=" height: 32px;"></td>
+        <td style=" height: 32px;">
+            <input id="btnSubmit" type="submit" name="btnSubmit" value="Login" />
+            
+        </td>
+    </tr>
+   
+    <tr>
+        <td>&nbsp;</td>
+        <td>
+            &nbsp;</td>
+    </tr>
+    <tr>
+        <td style="text-align: left;">
+            <label id="Label5" style="color: #000; font-weight: 700;" >Guest User:</label>
+            <a style="font-size:18px" href='@Url.Action("Guest", "Account")'>Login Here</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+        <td style="text-align: right">
+            <label id="Label3" style="color: #000; font-weight: 700;" >NewUser:</label>
+            <a style="font-size:18px" href='@Url.Action("Registration", "Account")'>Click Here</a>
+            &nbsp;
+            &nbsp;</td>
+    </tr>
+    <tr>
+        <td style="width:180px;">&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+}

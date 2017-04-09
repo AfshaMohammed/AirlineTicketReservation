@@ -1,0 +1,84 @@
+﻿@model Airline_Ticket_Reservation.Models.Payment
+@{
+    ViewBag.Title = "Payment";
+}
+
+<h2>@ViewBag.Title.</h2>
+@using (Html.BeginForm("Payment", "Customer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <table style="width: 100%">
+        
+    
+    <tr>
+        <td style="color: #CC00CC; text-align: right; width: 531px; height: 41px;"><b>
+            <label id="Label3" style="color: #000000">Select Card</label>
+            </b></td>
+        <td style="width: 334px; height: 41px;">
+           @Html.DropDownList("cardtype", new List<SelectListItem>
+             { 
+               new SelectListItem { Text = "Debit", Value = "Debit"},
+               new SelectListItem { Text = "Credit", Value = "Credit"}
+               })   
+        </td>
+    </tr>
+    @*<tr>
+        <td style="width: 159px; text-align: right; height: 41px;">
+            <label id="Label16" style="font-weight: 700" >Amount</label>
+        </td>
+        <td style="height: 41px; width: 490px;">          
+              @Html.TextBoxFor(m => m.amount)
+                @Html.ValidationMessageFor(m => m.amount)
+            
+        </td>
+    </tr>*@
+    <tr>
+        <td style="color: #CC00CC; text-align: right; width: 531px; height: 44px;"><b>
+            <label id="Label4" style="color: #000000">Card Holder Name</label>
+            </b></td>
+        <td style="width: 334px; height: 44px;">              
+                  @Html.TextBoxFor(m => m.cname)
+                @Html.ValidationMessageFor(m => m.cname)         
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 159px; text-align: right; height: 44px;">
+            <label id="l1" style="font-weight: 700;">Cvv</label>
+        </td>
+        <td style="height: 44px; width: 490px;">            
+              @Html.TextBoxFor(m => m.cvv)
+                @Html.ValidationMessageFor(m => m.cvv)
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 159px; text-align: right; height: 44px;">
+            <label id="l2" style="font-weight: 700;">Card Number</label>
+        </td>
+        <td style="height: 44px; width: 490px;">           
+                @Html.TextBoxFor(m => m.cardno)
+                @Html.ValidationMessageFor(m => m.cardno)
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 159px; text-align: right; height: 44px;">
+            <label id="l3" style="font-weight: 700;">Expire Date</label>
+        </td>
+        <td style="height: 44px; width: 490px;">            
+                   @Html.TextBoxFor(m => m.edate)
+                @Html.ValidationMessageFor(m => m.edate)
+        </td>
+    </tr>
+    
+    <tr>
+        <td style="color: #CC00CC; text-align: center; height: 36px;" colspan="4">
+            <input id="btnSubmit" type="submit" name="btnSubmit" value="Pay Now" />                        
+        </td>
+    </tr>    
+    <tr>
+        <td style="width: 531px">&nbsp;</td>
+        <td style="width: 334px">&nbsp;</td>
+        
+    </tr>
+         
+</table>
+}

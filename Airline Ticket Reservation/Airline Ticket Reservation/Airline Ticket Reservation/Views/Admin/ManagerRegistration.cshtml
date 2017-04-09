@@ -1,0 +1,112 @@
+﻿@model Airline_Ticket_Reservation.Models.ManagerRegistrationViewModel
+@{
+    ViewBag.Title = "Manager Register";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+
+
+@using (Html.BeginForm("ManagerRegistration", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+<table style="width: 100%">
+    
+    <tr>
+        <td style="text-align: right; width: 532px;"><b>
+            <label id="Label1"  style="color: #339966">FirstName</label>
+            </b></td>
+        <td>            
+            @*<input type="text" id="txtfname" name="txtfname">*@
+               @Html.TextBoxFor(m => m.txtfname)
+                @Html.ValidationMessageFor(m => m.txtfname)            
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: right; width: 532px;"><b>
+            <label id="Label2"  style="color: #339966">LastName</label>
+            </b></td>
+        <td>
+            @*<input type="text" id="txlname" name="txlname">*@
+             @Html.TextBoxFor(m => m.txlname)
+                @Html.ValidationMessageFor(m => m.txlname)              
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: right; width: 532px;"><b>
+            <label id="Label9"  style="color: #339966">EmailId</label>
+            </b></td>
+        <td>
+            @*<input type="text" id="txtEmail" name="txtEmail">*@
+                    @Html.TextBoxFor(m => m.txtEmail)
+                @Html.ValidationMessageFor(m => m.txtEmail)        
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: right; width: 532px;">
+            <label id="Label12"  style="color: #339966">Mobile No</label>
+            </td>
+        <td>
+            @*<input type="text" id="txtMob" name="txtMob">*@      
+              @Html.TextBoxFor(m => m.txtMob)
+                @Html.ValidationMessageFor(m => m.txtMob)    
+        &nbsp;</td>
+    </tr>
+    <tr>
+        <td style="text-align: right; width: 532px;"><b>
+            <label id="Label5"  style="color: #339966">Gender</label>
+            </b></td>
+        <td>
+            @Html.DropDownList("ddlgender", new List<SelectListItem>
+             { new SelectListItem { Text = "--Select--", Value = "--Select--", Selected=true},
+               new SelectListItem { Text = "Male", Value = "Male"},
+               new SelectListItem { Text = "Female", Value = "Female"}
+               })                                 
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: right; width: 532px;"><b>
+            <label id="Label6"  style="color: #339966">Country</label>
+            </b></td>
+        <td>
+            @*<input type="text" id="ddlcountry" name="ddlcountry" />*@
+                       @Html.TextBoxFor(m => m.ddlcountry)
+                @Html.ValidationMessageFor(m => m.ddlcountry)              
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: right; width: 532px;"><b>
+            <label id="Label7"  style="color: #339966">State</label>
+            </b></td>
+        <td>
+            @*<input type="text" id="ddlstate" name="ddlstate" />*@      
+                       @Html.TextBoxFor(m => m.ddlstate)
+                @Html.ValidationMessageFor(m => m.ddlstate)      
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: right; width: 532px;"><b>
+            <label id="Label8"  style="color: #339966">Address</label>
+            </b></td>
+        <td>
+            <textarea id="txtaddress" name="txtaddress"></textarea>            
+        </td>
+    </tr>
+    
+    <tr>
+        <td style="text-align: right">
+            &nbsp;</td>
+        <td>
+            <input id="btnSubmit" type="submit" name="btnSubmit" value="Register" />
+            
+        </td>
+    </tr>
+    
+    
+    <tr>
+        <td style="width: 532px">&nbsp;</td>
+        <td>
+            &nbsp;</td>
+    </tr>
+</table>
+}

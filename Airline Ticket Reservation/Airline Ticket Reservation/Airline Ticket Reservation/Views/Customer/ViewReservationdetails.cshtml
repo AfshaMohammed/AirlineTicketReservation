@@ -1,0 +1,75 @@
+﻿@model List<Airline_Ticket_Reservation.Models.ViewReservations>
+@{
+    ViewBag.Title = "My Reservation History";
+}
+<h2>@ViewBag.Title.</h2>
+<table class="grid" border="1">
+    <tr>
+        <th>BookingID</th>
+        <th>Flight Company</th>
+        <th>Flight Number</th>
+        <th>Source</th>
+        <th>Destination</th>        
+        <th>Arrival Date</th>
+        <th>Arrival Time</th>
+        <th>Depature Date</th>
+        <th>Depature Time</th>
+        <th>Booking Date</th>
+        <th>Seats</th>
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Status</th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @item.bookingId
+            </td>
+            <td>
+                @item.company
+            </td>
+            <td>
+                @item.number
+            </td>
+            
+            <td>
+                @item.source
+            </td>
+            <td>
+                @item.destination
+            </td>
+            <td>
+                @item.arrivalDate
+            </td>
+            <td>
+                @item.arrivTime
+            </td>
+            <td>
+                @item.depDate
+            </td>
+            <td>
+                @item.depTime
+            </td>
+            <td>
+                @item.bookingDate
+            </td>
+            <td>
+                @item.seats
+            </td>
+            <td>
+                @item.price
+            </td>
+            <td>
+                @item.amount
+            </td>
+            <td>
+                @item.status
+            </td>
+        </tr>
+        }
+    }
+
+</table>
