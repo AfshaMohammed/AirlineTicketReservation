@@ -16,6 +16,7 @@ namespace Airline_Ticket_Reservation.Models
     {
         public string txtfcompany { get; set; }
         public string txtnoofseats { get; set; }
+        public string txtavailseats {get; set;}
         public string txtfno { get; set; }
         public string txtamt { get; set; }
         public string txtarrdate { get; set; }
@@ -25,10 +26,10 @@ namespace Airline_Ticket_Reservation.Models
         public string txtsource { get; set; }
         public string txtdestination { get; set; }
 
-        [Required(ErrorMessage = "Company Name can not be blank")]
+        [Required(ErrorMessage = "Booking Date can not be blank")]
         public string txtbookingdate { get; set; }
 
-        [Required(ErrorMessage = "Company Name can not be blank")]
+        [Required(ErrorMessage = "Booking Seats can not be blank")]
         [RegularExpression("[0-9]*", ErrorMessage = "Enter Seats is not Valid")]
         public string txtbookingseats { get; set; }
 
