@@ -129,6 +129,22 @@ namespace Airline_Ticket_Reservation.Controllers
             }
             return new string(chars);
         }
+        
+        private void sendMail(string email, string password)
+        {
+            MailMessage sendmail = new MailMessage();
+            sendmail.From = new MailAddress("mafsha030@gmail.com");
+            sendmail.To.Add(email);
+            sendmail.Body = "Welcome to Airline!" + "<br/><br/>" + "You are successfully registered" + "<br/><br/>" + "UserName:" +email+ "Password:" + "";
+            sendmail.Subject = "Airline";
+            sendmail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Credentials = new System.Net.NetworkCredential("mafsha030@gmail.com", "Afsha123");
+            smtp.EnableSsl = true;
+            smtp.Port = 587;
+            smtp.Send(sendmail));
+        }
 
         public ActionResult FlighDetails()
         {
