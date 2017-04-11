@@ -16,7 +16,10 @@ namespace Airline_Ticket_Reservation.Controllers
         {
             return View(@"~\Views\Customer\Home.cshtml");
         }
-
+        public ActionResult Message()
+        {
+            return View(@"~\Views\Customers\Message.cshtml");
+        }
         [HttpPost]
 
 
@@ -67,10 +70,14 @@ namespace Airline_Ticket_Reservation.Controllers
             bookingid();
             int i = new Bal().UserBooking(Session["bookingid"].ToString(), Session["uname"].ToString(), model.txtfcompany, model.txtfno, model.txtsource, model.txtdestination, model.txtbookingdate, model.txtarrdate, model.txtArrivTime, model.txtdepdate, model.txtdeptime, Convert.ToInt32(model.txtbookingseats), model.txtamt, model.txttotamt);
             if (i > 0)
+            {
                 TempData["message"] = "Flight Booking Completed\n Please Pay The Amount";
             Session["totalamountt"] = model.txttotamt;
             //return View(@"~\Views\Customer\Payment.cshtml", model);
             return RedirectToAction("Payment");
+        }
+        else
+            return RedirectToAction("Message");
         }
 
         public ActionResult Payment()
@@ -86,7 +93,22 @@ namespace Airline_Ticket_Reservation.Controllers
                 TempData["message"] = "Booking & Payment Successfully Completed";
             return RedirectToAction("Home");
         }
-
+    
+        private void sendMail(string email, string bookingid)
+        {
+            MailMessage sendmail = new MailMessage();
+            sendmail.From = new MailAddress("mafsha030@gmailcom");
+            sendmail.To.Add(email);
+            sendmail.Body = "Welcome to Airline" + "<br/><br/>" + "Have a happy and safe Journey!" + "<br/> Your Booking Id is <br/>" + bookingid + "";
+            sendmail.Subject = "Airline";
+            sendmail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Credentials = new System.Net.NetworkCredential("mafsha030@gmail.com", "Afsha123");
+            smtp.EnableSsl = true;
+            smtp.Port = 587;
+            smtp.Send(sendmail);
+        }
         public ActionResult History()
         {
             var model = new List<ViewReservations>();
@@ -219,6 +241,7 @@ namespace Airline_Ticket_Reservation.Controllers
                     Flight.txtdeptime = Convert.ToString(row["Deptime"]);
                     Flight.txtamt = Convert.ToString(row["PerSeatAmount"]);
                     Flight.txtnoofseats = Convert.ToString(row["NumberOfSeats"]);
+                    Flight.txtavailseats = Convert.ToString(row["AvailableSeats"]);
 
                     model.Add(Flight);
                 }
@@ -252,6 +275,5 @@ namespace Airline_Ticket_Reservation.Controllers
             }
            
             return View(@"~\Views\Customer\FlightBooking.cshtml", flighDetails);
-        }
     }
 }
