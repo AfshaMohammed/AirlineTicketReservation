@@ -17,16 +17,6 @@ namespace BusinessAccessLayer
            return dal.login(type, uname, pwd);
         }
 
-        public SqlDataReader getCountry()
-        {
-            return dal.getCountry();
-        }
-
-        public SqlDataReader getStates(string country)
-        {
-            return dal.getStates(country);
-        }
-
         public int UserRegistration(string fname, string lname, string email, string ph, string gender, string country, string state, string add, string pwd)
         {
             return dal.UserRegistration(fname, lname, email, ph, gender, country, state, add, pwd);
