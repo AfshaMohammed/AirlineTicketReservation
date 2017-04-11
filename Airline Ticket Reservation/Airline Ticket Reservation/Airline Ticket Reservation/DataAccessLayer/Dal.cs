@@ -46,30 +46,6 @@ namespace DataAccessLayer
             return ds;
         }
 
-        public SqlDataReader getCountry()
-        {
-            if (con.State == ConnectionState.Open)
-                con.Close();
-            con.Open();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select distinct(Country) from States";
-            cmd.Connection = con;
-            sdr = cmd.ExecuteReader();
-            return sdr;
-        }
-
-        public SqlDataReader getStates(string country)
-        {
-            if (con.State == ConnectionState.Open)
-                con.Close();
-            con.Open();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select State from States where Country='" + country + "'";
-            cmd.Connection = con;
-            sdr = cmd.ExecuteReader();
-            return sdr;
-        }
-
         public int UserRegistration(string fname, string lname, string email, string ph, string gender, string country, string state, string add, string pwd)
         {
             if (con.State == ConnectionState.Open)
@@ -187,7 +163,7 @@ namespace DataAccessLayer
                 con.Close();
             con.Open();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select FlightNumber,FlightCompany,ArrivalDate,DepatureDate,NumberOfSeats,Source,Destination,PerSeatAmount,Arrivaltime,Deptime from Addflight where FlightNumber='" + number + "'";
+            cmd.CommandText = "select FlightNumber,FlightCompany,ArrivalDate,DepatureDate,NumberOfSeats,Source,Destination,PerSeatAmount,Arrivaltime,Deptime,AvailableSeats from Addflight where FlightNumber='" + number + "'";
             cmd.Connection = con;
             sda = new SqlDataAdapter(cmd);
             sda.Fill(ds);
