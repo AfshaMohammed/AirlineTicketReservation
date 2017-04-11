@@ -29,6 +29,7 @@
         <th>Depature TIme</th>
         <th>Amount</th>
         <th>Seats</th>
+        <th>Available Seats</th>
         <th></th>
     </tr>
     @if (Model != null)
@@ -67,6 +68,9 @@
             </td>
             <td>
                 @item.txtnoofseats
+            </td>
+            <td>
+                @item.txtavailseats
             </td>
             <td>                 
                  <a   href='@Url.Action("FlightDetailss", "Customer", new { FlightNum = item.txtfno , isDelete= true,userype= "User"})'>Book Now</a>
