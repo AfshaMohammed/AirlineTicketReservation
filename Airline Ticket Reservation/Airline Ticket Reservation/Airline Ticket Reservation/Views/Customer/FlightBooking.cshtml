@@ -108,7 +108,14 @@
                 @Html.ValidationMessageFor(m => m.txtnoofseats)
         </td>
     </tr>
-
+    <tr>
+        <td style="width: 159px; text-align:right; height:32px;">
+            <b><label id="label88" style="color: #000000">Available Seats</label></b>
+        </td>
+        @Html.TextBoxFor(m => m.txtavailseats)
+        @Html.ValidationMessageFor(m => m.txtavailseats)
+        </td>
+    </tr>
     <tr>
         <td style="width: 159px; text-align: right; height: 38px;">
             <label id="Label15" style="font-weight: 700">PerSeatAmount</label>
